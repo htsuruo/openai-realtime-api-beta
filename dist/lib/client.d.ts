@@ -26,7 +26,7 @@
  * @property {string} [model]
  * @property {string[]} [modalities]
  * @property {string} [instructions]
- * @property {"alloy"|"shimmer"|"echo"} [voice]
+ * @property {"alloy"|"ash"|"ballad"|"coral"|"echo"|"sage"|"shimmer"|"verse"} [voice]
  * @property {AudioFormatType} [input_audio_format]
  * @property {AudioFormatType} [output_audio_format]
  * @property {AudioTranscriptionType|null} [input_audio_transcription]
@@ -255,6 +255,13 @@ export class RealtimeClient extends RealtimeEventHandler {
      */
     removeTool(name: string): true;
     /**
+     * Adds a concurrent agent
+     * @param {string} prompt_instructions
+     * @param {string} metadata_topic
+     * @returns {true}
+     */
+    addConcurrentAgent(prompt_instructions: string, metadata_topic: string): true;
+    /**
      * Deletes an item
      * @param {string} id
      * @returns {true}
@@ -336,7 +343,7 @@ export type SessionResourceType = {
     model?: string;
     modalities?: string[];
     instructions?: string;
-    voice?: "alloy" | "shimmer" | "echo";
+    voice?: "alloy" | "ash" | "ballad" | "coral" | "echo" | "sage" | "shimmer" | "verse";
     input_audio_format?: AudioFormatType;
     output_audio_format?: AudioFormatType;
     input_audio_transcription?: AudioTranscriptionType | null;
