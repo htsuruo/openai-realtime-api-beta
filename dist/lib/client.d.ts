@@ -257,21 +257,6 @@ export class RealtimeClient extends RealtimeEventHandler {
      */
     removeTool(name: string): true;
     /**
-     * Registers a concurrent agent that will automatically process all user messages
-     * @param {string} agent_id - Unique identifier for this agent
-     * @param {string} prompt_instructions - Instructions for the agent
-     * @param {Object} tool_definition - Tool parameters for the model
-     * @param {Function} handler - Handler function that receives the parsed response data
-     * @returns {true}
-     */
-    registerConcurrentAgent(agent_id: string, prompt_instructions: string, tool_definition: any, handler: Function): true;
-    /**
-     * Unregisters a concurrent agent
-     * @param {string} agent_id - ID of the agent to unregister
-     * @returns {true}
-     */
-    unregisterConcurrentAgent(agent_id: string): true;
-    /**
      * Deletes an item
      * @param {string} id
      * @returns {true}
@@ -324,6 +309,21 @@ export class RealtimeClient extends RealtimeEventHandler {
     waitForNextCompletedItem(): Promise<{
         item: ItemType;
     }>;
+    /**
+     * Registers a concurrent agent that will automatically process all user messages
+     * @param {string} agent_id - Unique identifier for this agent
+     * @param {string} prompt_instructions - Instructions for the agent
+     * @param {Object} tool_definition - Tool parameters for the model
+     * @param {Function} handler - Handler function that receives the parsed response data
+     * @returns {true}
+     */
+    registerConcurrentAgent(agent_id: string, prompt_instructions: string, tool_definition: any, handler: Function): true;
+    /**
+     * Unregisters a concurrent agent
+     * @param {string} agent_id - ID of the agent to unregister
+     * @returns {true}
+     */
+    unregisterConcurrentAgent(agent_id: string): true;
 }
 /**
  * Valid audio formats
