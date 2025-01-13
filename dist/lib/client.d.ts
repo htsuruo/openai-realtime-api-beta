@@ -193,6 +193,8 @@ export class RealtimeClient extends RealtimeEventHandler {
     };
     realtime: RealtimeAPI;
     conversation: RealtimeConversation;
+    concurrentAgents: Map<any, any>;
+    _hasUserMessageHandler: boolean;
     /**
      * Resets sessionConfig and conversationConfig to default
      * @private
@@ -255,13 +257,20 @@ export class RealtimeClient extends RealtimeEventHandler {
      */
     removeTool(name: string): true;
     /**
-     * Adds a concurrent agent
-     * @param {string} prompt_instructions
-     * @param {string} metadata_topic
-     * @param {string} message_id
+     * Registers a concurrent agent that will automatically process all user messages
+     * @param {string} agent_id - Unique identifier for this agent
+     * @param {string} prompt_instructions - Instructions for the agent
+     * @param {Object} tool_definition - Tool parameters for the model
+     * @param {Function} handler - Handler function that receives the parsed response data
      * @returns {true}
      */
-    addConcurrentAgent(prompt_instructions: string, metadata_topic: string, message_id: string): true;
+    registerConcurrentAgent(agent_id: string, prompt_instructions: string, tool_definition: any, handler: Function): true;
+    /**
+     * Unregisters a concurrent agent
+     * @param {string} agent_id - ID of the agent to unregister
+     * @returns {true}
+     */
+    unregisterConcurrentAgent(agent_id: string): true;
     /**
      * Deletes an item
      * @param {string} id
